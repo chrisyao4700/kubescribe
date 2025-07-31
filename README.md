@@ -4,11 +4,11 @@ A **Kubernetes‑native framework** for scheduled data processing and reporting.
 
 - Fetch data from the **Production Database**, process it (~5 minutes end‑to‑end), and write results to the **Report Database**.
 - Run the core job on a **Kubernetes CronJob** at a configurable cadence.
-- Record each run’s lifecycle and details in **RunLog** (formerly "OpsLog Database").
+- Record each run’s lifecycle and details in **OpsLog Database**.
 - Expose a lightweight **API** to manually trigger runs, read from RunLog, and (optionally) browse data in the Report Database.
 - Emit **notifications** (e.g., email) on errors.
 
-> **Note:** The **Production Database** and **Report Database** already exist. **RunLog** is a new PostgreSQL database owned by this project.
+> **Note:** The **Production Database** and **Report Database** already exist. **OpsLog** is a new PostgreSQL database owned by this project.
 
 ---
 
@@ -23,10 +23,10 @@ A **Kubernetes‑native framework** for scheduled data processing and reporting.
 
 2. **api** (FastAPI)
    - `POST /runs/trigger` — create a one‑off Kubernetes Job to run core‑runner immediately.
-   - `GET /runs` / `GET /runs/{run_id}` — read from **RunLog**.
+   - `GET /runs` / `GET /runs/{run_id}` — read from **OpsLog**.
    - *(Optional)* endpoints to read from the **Report Database** for convenience/admin views.
 
-3. **RunLog** (PostgreSQL)
+3. **OpsLog** (PostgreSQL)
    - Stores reliable execution records for operations, observability, and audit.
    - Backed by a simple schema optimized for listing and drill‑down.
 
