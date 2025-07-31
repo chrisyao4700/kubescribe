@@ -68,7 +68,7 @@ pip install -U pip
 pip install -e .
 ```
 
-Provide RUNLOG_URL, DB_A_URL, and DB_B_URL via .env or your shell before running.
+Provide `OPSLOG_DB_URL`, `PROD_DB_URL`, and `REPORT_DB_URL` via .env or your shell before running.
 
 Run RunLog locally
 

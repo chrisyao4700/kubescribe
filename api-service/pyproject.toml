@@ -1,0 +1,18 @@
+[project]
+name = "kubescribe-api"
+version = "0.1.0"
+description = "FastAPI service to trigger core-runner Jobs and query OpsLog/report data."
+requires-python = ">=3.10"
+readme = "README.md"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "pydantic>=2.8",
+  "python-dotenv>=1.0",
+  "sqlalchemy>=2.0",
+  "psycopg[binary]>=3.2",
+  "kubernetes>=30.0"
+]
+
+[tool.black]
+line-length = 100

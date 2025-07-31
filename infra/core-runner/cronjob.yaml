@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: core-runner
+spec:
+  schedule: "0 * * * *"   # every hour
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: core-runner
+              image: your-registry/kubescribe/core-runner:0.1.0
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - secretRef:
+                    name: core-runner-secrets
+              env:
+                - name: RUN_TRIGGER
+                  value: "cron"
+                - name: RUN_SOURCE
+                  value: "k8s"

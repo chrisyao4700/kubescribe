@@ -1,0 +1,20 @@
+[project]
+name = "kubescribe-core-runner"
+version = "0.1.0"
+description = "Core runner: fetch from production DB, process, write to report DB, and log to OpsLog."
+requires-python = ">=3.10"
+readme = "README.md"
+dependencies = [
+  "pydantic>=2.8",
+  "python-dotenv>=1.0",
+  "sqlalchemy>=2.0",
+  "psycopg[binary]>=3.2",
+  "pymysql>=1.1",
+  "loguru>=0.7"
+]
+
+[project.scripts]
+kubescribe-core-runner = "kubescribe_core_runner.main:run"
+
+[tool.black]
+line-length = 100

@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: core-runner-manual-{{RUN_ID}}   # your API can template this
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: core-runner
+          image: your-registry/kubescribe/core-runner:0.1.0
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: core-runner-secrets
+          env:
+            - name: RUN_TRIGGER
+              value: "api"
+            - name: RUN_SOURCE
+              value: "k8s"
+            - name: RUN_ID
+              value: "{{RUN_ID}}"
