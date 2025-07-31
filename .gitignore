@@ -1,0 +1,24 @@
+# .gitignore（Python / macOS / VSCode / venv）
+cat > .gitignore << 'EOF'
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+
+# VSCode
+.vscode/
+
+# Byte-compiled / cache
+.pytest_cache/
+.mypy_cache/
+
+# Dist
+dist/
+build/
