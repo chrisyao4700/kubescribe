@@ -48,7 +48,7 @@ docker run --rm --env-file .env kubescribe/core-runner:0.1.0
 
 ## Kubernetes
 
-Manifests are under `infra/k8s/core-runner/`:
+Manifests are under `infra`/core-runner/`:
 
 - `cronjob.yaml` — schedule periodic runs.
 - `job-template.yaml` — a template for on-demand runs (e.g., created by your API).
